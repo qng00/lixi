@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Mở Lì Xì May Mắn</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: url('link-hinh-ngua.webp') no-repeat center center/cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        text-align: center;
+        color: white;
+    }
+
+    .container {
+        background: rgba(0,0,0,0.35);
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+        width: 350px;
+    }
+
+    h1 {
+        margin-bottom: 15px;
+    }
+
+    button {
+        background: gold;
+        border: none;
+        padding: 15px 30px;
+        font-size: 18px;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: 0.3s;
+        font-weight: bold;
+    }
+
+    button:hover {
+        transform: scale(1.1);
+        background: orange;
+    }
+
+    button:disabled {
+        background: gray;
+        cursor: not-allowed;
+        transform: none;
+    }
+
+    .result {
+        margin-top: 25px;
+        font-size: 26px;
+        font-weight: bold;
+        min-height: 40px;
+        animation: fadeIn 0.5s ease-in-out;
+    }
+
+    .remaining {
+        margin-top: 15px;
+        font-size: 16px;
+        opacity: 0.9;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: scale(0.8); }
+        to { opacity: 1; transform: scale(1); }
+    }
+</style>
+
+</head>
+<body>
+
+<div class="container">
+    <h1>🧧 Mở Lì Xì May Mắn 🧧</h1>
+
+    <button onclick="openLucky()" id="openBtn">
+        Mở Lì Xì
+    </button>
+
+    <div class="result" id="result"></div>
+    <div class="remaining" id="remaining"></div>
+</div>
+
+<!-- Âm thanh -->
+<audio id="openSound" 
+src="https://www.youtube.com/watch?v=hjYOanJelUs&start_radio=1">
+</audio>
+
+<script>
+
+let maxTurns = 5;
+let remainingTurns = maxTurns;
+
+document.getElementById("remaining").innerHTML =
+    "🎁 Bạn còn " + remainingTurns + " lượt mở";
+
+function openLucky() {
+
+    if (remainingTurns <= 0) {
+        return;
+    }
+
+    // Âm thanh
+    document.getElementById("openSound").play();
+
+    // Giảm lượt
+    remainingTurns--;
+
+    // Hệ thống tỉ lệ hiếm
+    const random = Math.random();
+
+    let luckyMoney;
+
+    if (random < 0.01) {
+        luckyMoney = 500000; // 1% siêu hiếm
+    } else if (random < 0.05) {
+        luckyMoney = 200000; // 4%
+    } else if (random < 0.15) {
+        luckyMoney = 100000; // 10%
+    } else if (random < 0.30) {
+        luckyMoney = 50000;  // 15%
+    } else if (random < 0.50) {
+        luckyMoney = 20000;  // 20%
+    } else if (random < 0.75) {
+        luckyMoney = 10000;  // 25%
+    } else {
+        luckyMoney = 5000;   // 25%
+    }
+
+    const resultDiv = document.getElementById("result");
+
+    if (luckyMoney === 500000) {
+        resultDiv.innerHTML =
+            "💎 JACKPOT 💎<br>" +
+            luckyMoney.toLocaleString('vi-VN') +
+            " VNĐ";
+    } else {
+        resultDiv.innerHTML =
+            "🎉 Bạn nhận được: " +
+            luckyMoney.toLocaleString('vi-VN') +
+            " VNĐ 🎉";
+    }
+
+    document.getElementById("remaining").innerHTML =
+        "🎁 Bạn còn " + remainingTurns + " lượt mở";
+
+    if (remainingTurns === 0) {
+        document.getElementById("openBtn").disabled = true;
+        document.getElementById("remaining").innerHTML =
+            "🚫 Bạn đã hết lượt mở!";
+    }
+}
+
+</script>
+
+</body>
+</html>
