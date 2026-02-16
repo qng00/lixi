@@ -92,7 +92,7 @@ src="https://www.youtube.com/watch?v=hjYOanJelUs&start_radio=1">
 
 <script>
 
-let maxTurns = 5;
+let maxTurns = 1;
 let remainingTurns = maxTurns;
 
 document.getElementById("remaining").innerHTML =
@@ -116,7 +116,7 @@ function openLucky() {
     let luckyMoney;
 
     if (random < 1) {
-        luckyMoney = 500000; // 1% siêu hiếm
+        luckyMoney = 'Dành hết tất cả may mắn cho em'; // 1% siêu hiếm
     } else if (random < 0.05) {
         luckyMoney = 200000; // 4%
     } else if (random < 0.15) {
@@ -135,9 +135,9 @@ function openLucky() {
 
     if (luckyMoney === 500000) {
         resultDiv.innerHTML =
-            "Luôn Luôn may mắn nhé<br>" +
+            "Chúc mừng năm mới <br>" +
             luckyMoney.toLocaleString('vi-VN') +
-            " VNĐ";
+            " SMILE";
     } else {
         resultDiv.innerHTML =
             "🎉 Bạn nhận được: " +
@@ -159,4 +159,5 @@ function openLucky() {
 
 </body>
 </html>
+
 
