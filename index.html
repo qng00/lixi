@@ -115,7 +115,7 @@ function openLucky() {
 
     let luckyMoney;
 
-    if (random < 0.01) {
+    if (random < 1) {
         luckyMoney = 500000; // 1% siêu hiếm
     } else if (random < 0.05) {
         luckyMoney = 200000; // 4%
@@ -135,7 +135,7 @@ function openLucky() {
 
     if (luckyMoney === 500000) {
         resultDiv.innerHTML =
-            "💎 JACKPOT 💎<br>" +
+            "Luôn Luôn may mắn nhé<br>" +
             luckyMoney.toLocaleString('vi-VN') +
             " VNĐ";
     } else {
@@ -159,3 +159,4 @@ function openLucky() {
 
 </body>
 </html>
+
